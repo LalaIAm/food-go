@@ -33,10 +33,6 @@ jobs:
       - script: npm run build 
         displayName: 'Build'  
 
-      - script: |
-         npx print-env AGENT 
-         npx print-env BUILD 
-
       - script: npm run preview &
       - script:  npx wait-on 'http://localhost:5173'
       - script: npx cypress run --record --parallel --ci-build-id $BUILD_BUILDNUMBER 
