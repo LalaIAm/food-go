@@ -1,4 +1,5 @@
 jobs:
+
   - job: Cypress_e2e_tests 
     pool:
       vmImage: 'ubuntu-latest'
@@ -36,6 +37,14 @@ jobs:
       - script: npm run preview &
       - script:  npx wait-on 'http://localhost:5173'
       - script: npx cypress run --record --parallel --ci-build-id $BUILD_BUILDNUMBER 
+
+      
+      - task: PublishTestResults@2
+        inputs:
+          testResultsFormat: 'JUnit'
+          testResultsFiles: '**/test-*.xml'
+          searchFolder: '$(System.DefaultWorkingDirectory)/results'
+          mergeTestResults: true
 
         env:
           CYPRESS_RECORD_KEY: $(CYPRESS_RECORD_KEY) 
