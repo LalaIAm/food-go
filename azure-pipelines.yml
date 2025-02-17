@@ -44,7 +44,14 @@ jobs:
           testResultsFormat: 'JUnit'
           testResultsFiles: '**/test-*.xml'
           searchFolder: '$(System.DefaultWorkingDirectory)/results'
-          mergeTestResults: true
+          mergeTestResults: true 
+
+      - task: PublishBuildArtifacts@1
+        inputs:
+          PathtoPublish: 'dist'
+          ArtifactName: 'drop'
+          publishLocation: 'Container'
+
 
         env:
           CYPRESS_RECORD_KEY: $(CYPRESS_RECORD_KEY) 
