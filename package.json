@@ -10,7 +10,9 @@
     "preview": "vite preview --port 5173",
     "cy:open": "cypress open",
     "cy:run-e2e": "cypress run --e2e",
-    "cy:e2e": "start-server-and-test preview http-get://localhost:5173 cy:run-e2e"
+    "cy:e2e": "start-server-and-test preview http-get://localhost:5173 cy:record",
+     "cy:verify": "cypress verify",
+     "cy:record": "cypress run --record"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
